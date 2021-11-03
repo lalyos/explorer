@@ -1,3 +1,10 @@
+This is a fork of https://github.com/kubernetes/examples/tree/master/staging/explorer
+
+additional feature:
+- COLOR env var for background color
+
+--- original ---
+
 ### explorer
 
 Explorer is a little container for examining the runtime environment Kubernetes produces for your pods.

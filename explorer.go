@@ -52,10 +52,16 @@ func main() {
 	}
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		color := os.Getenv("COLOR")
+		if color == "" {
+			color = "lightgray"
+		}
+		fmt.Fprintf(w, "<html><body bgcolor='%v'>", color)
 		fmt.Fprintf(w, "<b> Kubernetes environment explorer </b><br/><br/>")
 		for _, v := range links {
 			fmt.Fprintf(w, `<a href="%v">%v: %v</a><br/>`, v.link, v.link, v.desc)
 		}
+		fmt.Fprintf(w, "</body></html>")
 	})
 
 	http.Handle("/fs/", http.StripPrefix("/fs/", http.FileServer(http.Dir("/"))))
